@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Alexandre Devert <marmakoide@yahoo.fr>
+/* Copyright (c) 2012-2018 Alexandre Devert
  * 
  * JPack is free software; you can redistribute it and/or modify it under the
  * terms of the MIT license. See LICENSE for details. */
@@ -16,7 +16,7 @@ import org.marmakoide.numeric.Vector;
  * weights. It also allows to represent multiples MLP with the same structure
  * with a minimal ressource usage.
  * 
- * @author Alexandre Devert <marmakoide@yahoo.fr>
+ * @author Alexandre Devert
  * @version 1.0
  * @since 2012-05-04
  */

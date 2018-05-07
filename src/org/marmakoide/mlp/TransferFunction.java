@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Alexandre Devert <marmakoide@yahoo.fr>
+/* Copyright (c) 2012-2018 Alexandre Devert
  * 
  * JPack is free software; you can redistribute it and/or modify it under the
  * terms of the MIT license. See LICENSE for details. */
@@ -21,7 +21,7 @@ import org.marmakoide.numeric.Vector;
  * <li>Amortize the cost of repeatingly calling the <code>transform</code>
  * </ul>
  * 
- * @author Alexandre Devert <marmakoide@yahoo.fr>
+ * @author Alexandre Devert
  * @version 1.0
  * @since 2012-05-04
  */

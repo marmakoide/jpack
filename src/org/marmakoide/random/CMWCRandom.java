@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Alexandre Devert <marmakoide@yahoo.fr>
+/* Copyright (c) 2012-2018 Alexandre Devert
  * 
  * JPack is free software; you can redistribute it and/or modify it under the
  * terms of the MIT license. See LICENSE for details. */
@@ -16,7 +16,7 @@ import java.util.Random;
  * is not thread-safe. It is a straight implementation of the CMWC generator
  * from George Marsaglia, with state size of 1024
  * 
- * @author Alexandre Devert <marmakoide@yahoo.fr>
+ * @author Alexandre Devert
  * @version 1.0
  * @since 2012-02-11
  */

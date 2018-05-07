@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Alexandre Devert <marmakoide@yahoo.fr>
+/* Copyright (c) 2012-2018 Alexandre Devert 
  * 
  * JPack is free software; you can redistribute it and/or modify it under the
  * terms of the MIT license. See LICENSE for details. */

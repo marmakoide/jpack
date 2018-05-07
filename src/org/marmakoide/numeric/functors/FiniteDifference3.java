@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Alexandre Devert <marmakoide@yahoo.fr>
+/* Copyright (c) 2012-2018 Alexandre Devert
  * 
  * JPack is free software; you can redistribute it and/or modify it under the
  * terms of the MIT license. See LICENSE for details. */
@@ -10,7 +10,7 @@ import org.marmakoide.numeric.UnaryFunctor;
 /**
  * Implements a 3 points stencil finite difference as a functor.
  * 
- * @author Alexandre Devert <marmakoide@yahoo.fr>
+ * @author Alexandre Devert
  * @version 1.0
  * @since 2012-02-08
  */
