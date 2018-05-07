@@ -1,0 +1,5 @@
+# Class files
+*.class
+
+# Package files
+*.jar
