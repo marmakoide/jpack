@@ -10,7 +10,8 @@ So far, **jpack** provides
 * An implementation of [CMA-ES](https://en.wikipedia.org/wiki/CMA-ES), a 
 black-box, derivative-free optimization algorithm . It's a state-of-the-art, 
 a strong benchmark champion, it's used in the industry, and it has strong 
-theoritical foundations.
+theoritical foundations. A few variations are provided, so that one can exploits
+hypothesis on the optimization problem.
 * A very bare-bone implementation of feed-forward neural network.
 
 I (the original author) plan to add tools in **jpack** as time goes. 
