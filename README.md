@@ -14,7 +14,27 @@ theoritical foundations. A few variations are provided, so that one can exploits
 hypothesis on the optimization problem.
 * A very bare-bone implementation of feed-forward neural network.
 
-I (the original author) plan to add tools in **jpack** as time goes. 
+I (the original author) made **jpack** to help a friend. A few years later, I
+have been encouraged to release this code. I plan to add tools in **jpack** as 
+time goes. 
+
+## Compilation and installation
+
+An [Ant](https://ant.apache.org/) build file is provided to automate **jpack** 
+build. From the main directory, do
+
+```
+ant
+```
+
+**jpack** is going to be compiled and packaged as a single *.jar* file in the
+*dist* directory, as *jpack.jar*.
+
+You can delete all the build files and distribution files by doing
+
+```
+ant clean
+```
 
 ## Authors
 
