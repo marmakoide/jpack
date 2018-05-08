@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project name="jpack" default="main" basedir=".">
+	<property name="src.dir"   value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="dist.dir"  value="dist"/>
+
+	<target name="clean" description="Clean-up">
+		<delete dir="${build.dir}"/>
+		<delete dir="${dist.dir}"/>
+	</target>
+
+	<target name="init" description="Build initialization">
+		<tstamp />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="compile" depends="init" description="Compile all the package sources">
+		<mkdir dir="${build.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false" debug="off" optimize="on" deprecation="on"/>
+	</target>
+
+	<target name="jar" depends="compile" description="Generate the JAR file for the package">
+		<jar jarfile="${dist.dir}/jpack.jar" basedir="${build.dir}">
+		</jar>
+	</target>
+
+	<target name="main" depends="clean, compile, jar"/>
+</project>
