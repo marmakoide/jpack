@@ -11,6 +11,7 @@ import org.marmakoide.numeric.functors.Cos;
 import org.marmakoide.numeric.functors.Cosh;
 import org.marmakoide.numeric.functors.Exp;
 import org.marmakoide.numeric.functors.Floor;
+import org.marmakoide.numeric.functors.Log;
 import org.marmakoide.numeric.functors.Sin;
 import org.marmakoide.numeric.functors.Sinh;
 import org.marmakoide.numeric.functors.Sqrt;
@@ -126,6 +127,17 @@ public final class MatrixMath {
    */
   public final static Matrix exp(final Matrix inMatrix) {
     return inMatrix.broadcast(new Exp());
+  }
+
+  /**
+   * Computes M[i,j] = log(M[i,j])
+   * 
+   * @param inMatrix
+   *          the matrix to transform
+   * @return the matrix given as input
+   */
+  public final static Matrix log(final Matrix inMatrix) {
+    return inMatrix.broadcast(new Log());
   }
 
   /**

@@ -11,6 +11,7 @@ import org.marmakoide.numeric.functors.Cos;
 import org.marmakoide.numeric.functors.Cosh;
 import org.marmakoide.numeric.functors.Exp;
 import org.marmakoide.numeric.functors.Floor;
+import org.marmakoide.numeric.functors.Log;
 import org.marmakoide.numeric.functors.Sin;
 import org.marmakoide.numeric.functors.Sinh;
 import org.marmakoide.numeric.functors.Sqrt;
@@ -126,6 +127,17 @@ public final class VectorMath {
    */
   public final static Vector exp(final Vector inVector) {
     return inVector.broadcast(new Exp());
+  }
+
+  /**
+   * Computes V[i] = log(V[i])
+   * 
+   * @param inVector
+   *          the vector to transform
+   * @return the vector given as input
+   */
+  public final static Vector log(final Vector inVector) {
+    return inVector.broadcast(new Log());
   }
 
   /**
