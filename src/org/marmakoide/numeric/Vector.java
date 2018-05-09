@@ -15,11 +15,7 @@ import org.marmakoide.numeric.functors.Product;
 import org.marmakoide.numeric.functors.Scale;
 import org.marmakoide.numeric.functors.ScaledAdd;
 import org.marmakoide.numeric.functors.Sub;
-import org.marmakoide.numeric.reductions.AbsSum;
-import org.marmakoide.numeric.reductions.Max;
-import org.marmakoide.numeric.reductions.Min;
-import org.marmakoide.numeric.reductions.SquareSum;
-import org.marmakoide.numeric.reductions.Sum;
+import org.marmakoide.numeric.reductions.*;
 
 /**
  * A dense vector of double.
@@ -508,6 +504,15 @@ public class Vector {
    */
   public final double sum() {
     return this.reduce(new Sum());
+  }
+
+  /**
+   * Returns the product of all the coefficients
+   * 
+   * @return the product of all the coefficients
+   */
+  public final double product() {
+    return this.reduce(new org.marmakoide.numeric.reductions.Product());
   }
 
   /**

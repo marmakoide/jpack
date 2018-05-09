@@ -14,11 +14,7 @@ import org.marmakoide.numeric.functors.Product;
 import org.marmakoide.numeric.functors.Scale;
 import org.marmakoide.numeric.functors.ScaledAdd;
 import org.marmakoide.numeric.functors.Sub;
-import org.marmakoide.numeric.reductions.AbsSum;
-import org.marmakoide.numeric.reductions.Max;
-import org.marmakoide.numeric.reductions.Min;
-import org.marmakoide.numeric.reductions.SquareSum;
-import org.marmakoide.numeric.reductions.Sum;
+import org.marmakoide.numeric.reductions.*;
 
 /**
  * A dense, column-major matrix of double.
@@ -598,6 +594,15 @@ public class Matrix {
   }
 
   /**
+   * Returns the product of all the coefficients
+   * 
+   * @return the product of all the coefficients
+   */
+  public final double product() {
+    return this.reduce(new org.marmakoide.numeric.reductions.Product());
+  }
+
+  /**
    * Returns the sum of all the coefficient's square
    * 
    * @return the sum of all the coefficient's square
@@ -711,6 +716,31 @@ public class Matrix {
    */
   public Vector sum(final boolean inColWise, final Vector outResult) {
     return this.reduce(new Sum(), inColWise, outResult);
+  }
+
+  /**
+   * Computes the col-wise or row-wise produvy of the coefficient's product
+   * 
+   * @param inColWise
+   *          computes col-wise or row-wise
+   * @return a new vector instance in which the col-wise or row-wise sum will
+   *         be stored
+   */
+  public final Vector product(final boolean inColWise) {
+    return this.reduce(new org.marmakoide.numeric.reductions.Product(), inColWise);
+  }
+
+  /**
+   * Computes the col-wise or row-wise product of the coefficient's product
+   * 
+   * @param inColWise
+   *          computes col-wise or row-wise
+   * @param outResult
+   *          the vector in which the col-wise or row-wise sum will be stored
+   * @return the vector given as input
+   */
+  public Vector product(final boolean inColWise, final Vector outResult) {
+    return this.reduce(new org.marmakoide.numeric.reductions.Product(), inColWise, outResult);
   }
 
   /**

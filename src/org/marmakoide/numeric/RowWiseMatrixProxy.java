@@ -14,11 +14,7 @@ import org.marmakoide.numeric.functors.InvScale;
 import org.marmakoide.numeric.functors.Product;
 import org.marmakoide.numeric.functors.Scale;
 import org.marmakoide.numeric.functors.Sub;
-import org.marmakoide.numeric.reductions.AbsSum;
-import org.marmakoide.numeric.reductions.Max;
-import org.marmakoide.numeric.reductions.Min;
-import org.marmakoide.numeric.reductions.SquareSum;
-import org.marmakoide.numeric.reductions.Sum;
+import org.marmakoide.numeric.reductions.*;
 
 /**
  * A row-wise view of a matrix.
@@ -184,6 +180,14 @@ public final class RowWiseMatrixProxy {
 
   public final Vector sum(final Vector outResult) {
     return this.mMatrix.reduce(new Sum(), false, outResult);
+  }
+
+  public final Vector product() {
+    return this.mMatrix.reduce(new org.marmakoide.numeric.reductions.Product(), false);
+  }
+
+  public final Vector product(final Vector outResult) {
+    return this.mMatrix.reduce(new org.marmakoide.numeric.reductions.Product(), false, outResult);
   }
 
   public final Vector squareSum() {

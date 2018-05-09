@@ -14,16 +14,12 @@ import org.marmakoide.numeric.functors.Product;
 import org.marmakoide.numeric.functors.Scale;
 import org.marmakoide.numeric.functors.ScaledAdd;
 import org.marmakoide.numeric.functors.Sub;
-import org.marmakoide.numeric.reductions.AbsSum;
-import org.marmakoide.numeric.reductions.Max;
-import org.marmakoide.numeric.reductions.Min;
-import org.marmakoide.numeric.reductions.SquareSum;
-import org.marmakoide.numeric.reductions.Sum;
+import org.marmakoide.numeric.reductions.*;
 
 /**
  * A column-wise view of a matrix.
  * <p>
- * This object allows to perform column-wise operations on a given matrix. For
+ * This object allows to perform column-wise operations on a given matrix. Fororg.marmakoide.numeric.reductions.
  * instance, a call to <code>scaledAdd</code> will have the same effect as
  * calling <code>scaledAdd</code> on each column of the matrix. Using a view
  * just allow to do this with less code and better performances.
@@ -170,6 +166,14 @@ public final class ColWiseMatrixProxy {
 
   public final Vector sum(final Vector outResult) {
     return this.mMatrix.reduce(new Sum(), true, outResult);
+  }
+
+  public final Vector product() {
+    return this.mMatrix.reduce(new org.marmakoide.numeric.reductions.Product(), true);
+  }
+
+  public final Vector product(final Vector outResult) {
+    return this.mMatrix.reduce(new org.marmakoide.numeric.reductions.Product(), true, outResult);
   }
 
   public final Vector squareSum() {
