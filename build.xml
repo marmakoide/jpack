@@ -1,14 +1,11 @@
 <?xml version="1.0"?>
 <project name="jpack" default="main" basedir=".">
 	<property name="src.dir"   value="src"/>
+	<property name="test.dir"   value="tests"/>
 	<property name="build.dir" value="build"/>
 	<property name="dist.dir"  value="dist"/>
 
-	<target name="clean" description="Clean-up">
-		<delete dir="${build.dir}"/>
-		<delete dir="${dist.dir}"/>
-	</target>
-
+	<!--- *** Package build ************************************************ !-->
 	<target name="init" description="Build initialization">
 		<tstamp />
 		<mkdir dir="${build.dir}" />
@@ -25,5 +22,41 @@
 		</jar>
 	</target>
 
+	<!-- *** Unit tests management ***************************************** !-->
+	<target name="test-init" depends="init" description="Test initialization">
+		<mkdir dir="${build.dir}/tests" />
+	</target>
+
+	<target name="test-compile" depends="jar, test-init" description="Compile the tests">
+		<javac srcdir="${test.dir}" destdir="${build.dir}/tests" includeantruntime="false" debug="off" optimize="on" deprecation="on">
+			<classpath>
+				<pathelement location="${dist.dir}/jpack.jar" />
+				<pathelement location="vendor/junit-4.12.jar" />
+				<pathelement location="vendor/hamcrest-core-1.3.jar" />
+				<pathelement location="${build.dir}/tests" />
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="test" depends="test-compile" description="Run the unit tests">
+		<junit fork="yes" printsummary="yes" haltonfailure="yes">
+    	<classpath>
+				<pathelement location="${dist.dir}/jpack.jar" />
+				<pathelement location="vendor/junit-4.12.jar" />
+				<pathelement location="vendor/hamcrest-core-1.3.jar" />
+				<pathelement location="${build.dir}/tests" />
+    	</classpath>
+			<formatter type="plain"/>
+			<test name="ReductionTest"/>
+		</junit>
+	</target>
+
+	<!-- *** Clean-up ****************************************************** !-->
+	<target name="clean" description="Clean-up">
+		<delete dir="${build.dir}"/>
+		<delete dir="${dist.dir}"/>
+	</target>
+
+	<!-- *** Fluff ********************************************************* !-->
 	<target name="main" depends="clean, compile, jar"/>
 </project>

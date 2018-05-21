@@ -36,6 +36,31 @@ You can delete all the build files and distribution files by doing
 ant clean
 ```
 
+## Unit testing
+
+Unit testing is done with [JUnit 4.12](https://junit.org/junit4/), and is managed
+with *Ant*. 
+
+To build and run the unit tests, do
+
+```
+ant test
+```
+
+The *JUnit* *.jar* files are not included in the source code, you will have
+to download them and copy them in a directory named *vendor*, at the root
+of the source tree.
+
+The following commands show how you can do this
+
+```
+mkdir vendor
+cd vendor
+wget http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar
+wget http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+cd ..
+``` 
+
 ## Authors
 
 * **Alexandre Devert** - *Initial work* - [marmakoide](https://github.com/marmakoide)
