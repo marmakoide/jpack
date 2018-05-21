@@ -37,6 +37,7 @@ public class ReductionTest {
 	@Test
 	public void testVectorSum() {
 		Vector lU = Vector.fromSequence(new Range(1., (double)(sSequenceSize + 1)));
+
 		double lExpectedValue = integerSum(sSequenceSize);
 		assertEquals(lU.sum(), lExpectedValue, 2 * (Math.ulp(lExpectedValue) - lExpectedValue));
 	}
@@ -44,7 +45,18 @@ public class ReductionTest {
 	@Test
 	public void testVectorSquareSum() {
 		Vector lU = Vector.fromSequence(new Range(1., (double)(sSequenceSize + 1)));
+
 		double lExpectedValue = integerSquareSum(sSequenceSize);
 		assertEquals(lU.squareSum(), lExpectedValue, 2 * (Math.ulp(lExpectedValue) - lExpectedValue));
+	}
+
+	@Test
+	public void testVectorAbsSum() {
+		Vector lU = Vector.fromSequence(new Range(1., (double)(sSequenceSize + 1)));
+		for(int i = 0; i < sSequenceSize; i += 2)
+			lU.set(i, -lU.get(i));
+
+		double lExpectedValue = integerSum(sSequenceSize);
+		assertEquals(lU.absSum(), lExpectedValue, 2 * (Math.ulp(lExpectedValue) - lExpectedValue));
 	}
 }
