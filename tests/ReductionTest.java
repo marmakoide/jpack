@@ -24,7 +24,12 @@ public class ReductionTest {
 
 	private static double integerSum(int n) {
 		double l = n;
-		return .5 * l * (l + 1);
+		return (l * (l + 1)) / 2.;
+	}
+
+	private static double integerSquareSum(int n) {
+		double l = n;
+		return (l * (l + 1) * (2 * l + 1)) / 6.;
 	}
 
 	// --- Tests ----------------------------------------------------------------
@@ -34,5 +39,12 @@ public class ReductionTest {
 		Vector lU = Vector.fromSequence(new Range(1., (double)(sSequenceSize + 1)));
 		double lExpectedValue = integerSum(sSequenceSize);
 		assertEquals(lU.sum(), lExpectedValue, 2 * (Math.ulp(lExpectedValue) - lExpectedValue));
+	}
+
+	@Test
+	public void testVectorSquareSum() {
+		Vector lU = Vector.fromSequence(new Range(1., (double)(sSequenceSize + 1)));
+		double lExpectedValue = integerSquareSum(sSequenceSize);
+		assertEquals(lU.squareSum(), lExpectedValue, 2 * (Math.ulp(lExpectedValue) - lExpectedValue));
 	}
 }
