@@ -22,17 +22,25 @@ public class ReductionTest {
 
 	// --- Helper functions -----------------------------------------------------
 
-	private static double integerSum(int n) {
-		double l = n;
-		return (l * (l + 1)) / 2.;
+	private static double integerSum(int inN) {
+		double lDblN = inN;
+		return (lDblN * (lDblN + 1)) / 2.;
 	}
 
-	private static double integerSquareSum(int n) {
-		double l = n;
-		return (l * (l + 1) * (2 * l + 1)) / 6.;
+	private static double integerSumRange(int inFrom, int inTo) {
+		return integerSum(inTo) - integerSum(inFrom);
 	}
 
-	// --- Tests ----------------------------------------------------------------
+	private static double integerSquareSum(int inN) {
+		double lDblN = inN;
+		return (lDblN * (lDblN + 1) * (2 * lDblN + 1)) / 6.;
+	}
+
+	private static double integerSquareSumRange(int inFrom, int inTo) {
+		return integerSquareSum(inTo) - integerSquareSum(inFrom);
+	}
+
+	// --- Test on full vector --------------------------------------------------
 
 	@Test
 	public void testVectorSum() {
@@ -58,5 +66,76 @@ public class ReductionTest {
 
 		double lExpectedValue = integerSum(sSequenceSize);
 		assertEquals(lU.absSum(), lExpectedValue, 2 * (Math.ulp(lExpectedValue) - lExpectedValue));
+	}
+
+	// --- Test on vector slice -------------------------------------------------
+
+	@Test
+	public void testVectorSliceSum() {
+		Vector lU = Vector.fromSequence(new Range(1., (double)(sSequenceSize + 1)));
+		
+		int lA = lU.getSize() / 4;
+		int lB = (3 * lU.getSize()) / 4;
+
+		// Front slice
+		Vector lVFront = lU.slice(0, lA);
+		double lExpectedValueFront = integerSumRange(0, lA);
+		assertEquals(lVFront.sum(), lExpectedValueFront, 2 * (Math.ulp(lExpectedValueFront) - lExpectedValueFront));
+
+		// Middle slice
+		Vector lVMiddle = lU.slice(lA, lB);
+		double lExpectedValueMiddle = integerSumRange(lA, lB);
+		assertEquals(lVMiddle.sum(), lExpectedValueMiddle, 2 * (Math.ulp(lExpectedValueMiddle) - lExpectedValueMiddle));
+
+		// Back slice
+		Vector lVBack = lU.slice(lB, lU.getSize());
+		double lExpectedValueBack = integerSumRange(lB, lU.getSize());
+		assertEquals(lVBack.sum(), lExpectedValueBack, 2 * (Math.ulp(lExpectedValueBack) - lExpectedValueBack));
+	}
+
+	@Test
+	public void testVectorSliceSquareSum() {
+		Vector lU = Vector.fromSequence(new Range(1., (double)(sSequenceSize + 1)));
+		
+		int lA = lU.getSize() / 4;
+		int lB = (3 * lU.getSize()) / 4;
+
+		// Front slice
+		Vector lVFront = lU.slice(0, lA);
+		double lExpectedValueFront = integerSquareSumRange(0, lA);
+		assertEquals(lVFront.squareSum(), lExpectedValueFront, 2 * (Math.ulp(lExpectedValueFront) - lExpectedValueFront));
+
+		// Middle slice
+		Vector lVMiddle = lU.slice(lA, lB);
+		double lExpectedValueMiddle = integerSquareSumRange(lA, lB);
+		assertEquals(lVMiddle.squareSum(), lExpectedValueMiddle, 2 * (Math.ulp(lExpectedValueMiddle) - lExpectedValueMiddle));
+
+		// Back slice
+		Vector lVBack = lU.slice(lB, lU.getSize());
+		double lExpectedValueBack = integerSquareSumRange(lB, lU.getSize());
+		assertEquals(lVBack.squareSum(), lExpectedValueBack, 2 * (Math.ulp(lExpectedValueBack) - lExpectedValueBack));
+	}
+
+	@Test
+	public void testVectorSliceAbsSum() {
+		Vector lU = Vector.fromSequence(new Range(1., (double)(sSequenceSize + 1)));
+		
+		int lA = lU.getSize() / 4;
+		int lB = (3 * lU.getSize()) / 4;
+
+		// Front slice
+		Vector lVFront = lU.slice(0, lA);
+		double lExpectedValueFront = integerSumRange(0, lA);
+		assertEquals(lVFront.absSum(), lExpectedValueFront, 2 * (Math.ulp(lExpectedValueFront) - lExpectedValueFront));
+
+		// Middle slice
+		Vector lVMiddle = lU.slice(lA, lB);
+		double lExpectedValueMiddle = integerSumRange(lA, lB);
+		assertEquals(lVMiddle.absSum(), lExpectedValueMiddle, 2 * (Math.ulp(lExpectedValueMiddle) - lExpectedValueMiddle));
+
+		// Back slice
+		Vector lVBack = lU.slice(lB, lU.getSize());
+		double lExpectedValueBack = integerSumRange(lB, lU.getSize());
+		assertEquals(lVBack.absSum(), lExpectedValueBack, 2 * (Math.ulp(lExpectedValueBack) - lExpectedValueBack));
 	}
 }
