@@ -48,6 +48,7 @@
     	</classpath>
 			<formatter type="plain"/>
 			<test name="ReductionTest"/>
+			<test name="DotProductTest"/>
 		</junit>
 	</target>
 
